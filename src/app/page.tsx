@@ -10,7 +10,7 @@ export default function Home() {
 
       <div className={styles.center}>
         <Image
-          src="/images/001.png"
+          src="/images/pokemon/001.png"
           alt="Next.js Logo"
           width={300}
           height={300}
