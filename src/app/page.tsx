@@ -1,12 +1,15 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import "./nav.module.css";
+import Navbar from "./nav";
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.description}>
-        <p>Homepage</p>
       </div>
+
+      <Navbar></Navbar>
 
       <div className={styles.center}>
         <Image
