@@ -7,15 +7,19 @@ function Navbar() {
 return (
     <>
     <div className={styles.navcontainer}>
-    <img src="./logo.png"></img>
-    <div>
+    <img src="/public/logo.jpg"></img>
+    <div className={styles.navright}>
     <div className={styles.navredbar}>HELLO</div>
     <div className={styles.navbar}>
+        <div className={styles.navitemscontainer}>
+            <div className={styles.navitems}>
           {navItems.map((item) => (
-            <div key={item} className={styles.navitems}>
+            <div key={item} className={styles.navitem}>
               {item}
             </div>
           ))}
+          </div>
+          </div>
               <button className={styles.trainerbutton}>Become a Trainer</button>
         </div>
         </div>
@@ -23,5 +27,7 @@ return (
     </>
 )
 }
+
+
 
 export default Navbar;
