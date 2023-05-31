@@ -6,8 +6,7 @@ import Navbar from "./nav";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-      </div>
+      <div className={styles.description}></div>
 
       <Navbar></Navbar>
 
