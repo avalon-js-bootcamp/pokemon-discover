@@ -21,6 +21,12 @@
     padding-top: 15px;
     padding-bottom: 15px;
     border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .arrow {
+    height: 15px;
   }
 
   .trainerButton {
@@ -34,6 +40,10 @@
     align-items: center;
     padding: 10px;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .hamburgerIcon {
+    height: 40px;
   }
 }
 
@@ -53,6 +63,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px;
+    padding-right: 50px;
     gap: 20px;
   }
 
@@ -78,11 +89,47 @@
   }
 
   .hamburgerIcon {
-    display: none;
+    visibility: hidden;
+    position: absolute;
   }
 
   .accountIcon {
     display: none;
+  }
+
+  .header {
+    background-color: #ff2f42;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 0px 15px;
+    font-size: 15px;
+  }
+
+  .stats {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .pokecoin {
+    height: 15px;
+  }
+
+  .pokeball {
+    height: 15px;
+  }
+
+  .weather {
+    background-color: #ff2f42;
+    border-radius: 50%;
+    margin: 5px;
+    margin-right: 50px;
+    padding: 0px 5px;
+  }
+
+  .umbrella {
+    height: 15px;
   }
 }
 
@@ -115,10 +162,6 @@
 
 .closeIcon:hover {
   cursor: pointer;
-}
-
-.hamburgerIcon {
-  height: 40px;
 }
 
 .hamburgerIcon:hover {
