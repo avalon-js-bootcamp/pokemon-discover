@@ -1,0 +1,92 @@
+.banner {
+  display: block;
+  width: 500px;
+  height: 100px;
+  left: 45%;
+  text-align: center;
+  background: transparent;
+  position: absolute;
+  top: 20px;
+  z-index: 3;
+  border-left-color: transparent white;
+  clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.banner:before,
+.banner:after {
+  content: "";
+  position: absolute;
+}
+.banner:before {
+  display: block;
+  width: auto;
+  height: 50px;
+  background: #000000;
+  position: relative;
+}
+.banner:after {
+  position: relative;
+  height: 0;
+  width: 5px;
+  right: -245px;
+  bottom: 10px;
+  border-top: 10px solid #000000;
+  border-right: 10px solid transparent;
+}
+.tittle {
+  color: white;
+  position: relative;
+  top: -35px;
+}
+.background {
+  display: flex;
+  flex-direction: row;
+  max-width: 900px;
+  position: absolute;
+  top: 5%;
+  left: 13%;
+}
+
+.run button {
+  border: none;
+  padding: 5px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 8px;
+  font-size: 20px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.233);
+  position: relative;
+  top: 70px;
+  left: 220px;
+  width: 180px;
+}
+.run img {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+.pokemon-images {
+  display: block;
+  position: absolute;
+  max-width: 300px;
+  max-height: 300px;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 rgba(0, 0, 0, 0.404));
+  top: 50%;
+  left: 35%;
+}
+
+.oval-shadow {
+  position: relative;
+  height: 70px;
+  background-color: #00000031;
+  border-radius: 100%;
+  margin-top: 25px;
+  max-width: 300px;
+  bottom: 90px;
+  z-index: -1;
+}
