@@ -110,14 +110,17 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    padding-top: 3px;
   }
 
   .pokecoin {
-    height: 15px;
+    height: 12px;
+    width: 12px;
   }
 
   .pokeball {
-    height: 15px;
+    height: 12px;
+    width: 12px;
   }
 
   .weather {
@@ -125,11 +128,11 @@
     border-radius: 50%;
     margin: 5px;
     margin-right: 50px;
-    padding: 0px 5px;
   }
 
-  .umbrella {
-    height: 15px;
+  .umbrellaIcon {
+    height: 20px;
+    width: 20px;
   }
 }
 
@@ -154,14 +157,25 @@
   background-color: #e9363c;
   border: 0px;
   border-radius: 64px;
+  font-size: 16px;
 }
 
 .logoIcon {
   height: 70px;
 }
 
+.closeIcon {
+  width: 40px;
+  height: 40px;
+}
+
 .closeIcon:hover {
   cursor: pointer;
+}
+
+.hamburgerIcon {
+  width: 40px;
+  height: 40px;
 }
 
 .hamburgerIcon:hover {

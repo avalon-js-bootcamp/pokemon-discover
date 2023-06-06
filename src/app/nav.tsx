@@ -50,7 +50,10 @@ function Navbar() {
               </div>
             </div>
             <div className={styles.weather}>
-              <img src="/images/umbrella.png" className={styles.umbrella}></img>
+              <img
+                src="/images/umbrella.png"
+                className={styles.umbrellaIcon}
+              ></img>
             </div>
           </div>
           <div className={styles.navBar}>
