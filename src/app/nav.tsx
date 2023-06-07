@@ -18,7 +18,10 @@ function Navbar() {
             }}
             style={{ display: isNavExpanded ? "none" : "block" }}
           ></img>
-          <div className={styles.closeIconContainer}>
+          <div
+            className={styles.closeIconContainer}
+            style={{ position: isNavExpanded ? "static" : "absolute" }}
+          >
             <img
               src="/images/close.png"
               className={styles.closeIcon}
