@@ -1,9 +1,15 @@
 import Image from "next/image";
 import "./styles/page.css"
 
+
 export default function Home() {
+  const randomPokemonNumber =Math.floor(Math.random() * 151)
+  const poke = randomPokemonNumber.toString().padStart(3,"0")
+ const randomBackgroundNumber=Math.floor(Math.random() * 23)
+
   return (
   
+
     <div className="main"><div className="banner">  <div className="tittle">Who is that Pokemon?</div></div>
     
         <div className="background">
@@ -12,14 +18,14 @@ export default function Home() {
  </div>
             
         <Image
-            src="/images/backgrounds/background_1.jpg"
+            src={`/images/backgrounds/background_${randomBackgroundNumber}.jpg`}
           alt="Next.js Logo"
           width={600}
           height={797}
           priority
         />
-                <div className="pokemon-images"><Image
-          src="/images/pokemon/001.png"
+                <div className="pokemon-images hidden"><Image
+          src={`/images/pokemon/${poke}.png`}
           alt="Next.js Logo"
           width={300}
           height={300}
