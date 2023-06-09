@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import WordleGame from "./Components/Wordle";
+import Keyboard from "./Components/Keyboard";
 
 export default function Home() {
   return (
@@ -17,6 +19,12 @@ export default function Home() {
           priority
         />
       </div>
+      <div>
+        <WordleGame></WordleGame>
+      </div>
+      {/* <div>
+        <Keyboard></Keyboard>
+      </div> */}
     </main>
   );
 }
