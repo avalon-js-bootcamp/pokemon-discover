@@ -10,7 +10,7 @@ interface LetterProps {
 
 function Letter(props: LetterProps) {
   const handleOnInput = () => {
-    props.onType(props.letterIndex);
+    props.onType(props.letterIndex, event);
   };
 
   return (
@@ -35,13 +35,23 @@ interface WordProps {
 function Word(props: WordProps) {
   const { word, setCurrentGuess, currentGuess } = props;
 
-  const handleOnType = (number: number) => {
+  const handleOnType = (
+    number: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { value } = event.target;
     const nextInput = document.querySelector(
       `input[name=wordleLetter_${props.attemptNumber}_${number + 1}]`
     ) as HTMLInputElement;
+    const prevInput = document.querySelector(
+      `input[name=wordleLetter_${props.attemptNumber}_${number - 1}]`
+    ) as HTMLInputElement;
 
-    if (nextInput) {
-      setCurrentGuess([...currentGuess, "a"]);
+    if (value === "" && prevInput) {
+      setCurrentGuess(currentGuess.slice(0, currentGuess.length - 1));
+      prevInput.focus();
+    } else if (nextInput) {
+      setCurrentGuess([...currentGuess, value]);
       nextInput.focus();
     }
   };
@@ -176,7 +186,7 @@ export default function WordleGame() {
       currentInput.value = value;
       setCurrentGuess([...currentGuess, value]);
     }
-    if (currentGuess.length < word.length) {
+    if (nextInput) {
       nextInput.focus();
     }
   }
