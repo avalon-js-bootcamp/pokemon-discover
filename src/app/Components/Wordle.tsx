@@ -5,7 +5,7 @@ import React, { useState, useEffect, useMemo } from "react";
 interface LetterProps {
   attemptNumber: number;
   letterIndex: number;
-  onType: (number) => void;
+  onType: (arg0: number) => void;
 }
 
 function Letter(props: LetterProps) {
@@ -28,10 +28,12 @@ function Letter(props: LetterProps) {
 interface WordProps {
   word: string;
   attemptNumber: number;
+  setCurrentGuess: (param: string[]) => void;
+  currentGuess: string[];
 }
 
 function Word(props: WordProps) {
-  const { word } = props;
+  const { word, setCurrentGuess, currentGuess } = props;
 
   const handleOnType = (number: number) => {
     const nextInput = document.querySelector(
@@ -39,6 +41,7 @@ function Word(props: WordProps) {
     ) as HTMLInputElement;
 
     if (nextInput) {
+      setCurrentGuess([...currentGuess, "a"]);
       nextInput.focus();
     }
   };
@@ -103,6 +106,7 @@ export default function WordleGame() {
   const [word, setWord] = useState("");
   const [attempt, setAttempt] = useState(1);
   const [lastGuess, setLastGuess] = useState<string[]>([]);
+  const [currentGuess, setCurrentGuess] = useState<string[]>([]);
 
   useEffect(() => {
     fetch("https://pokemon-explore.pages.dev/data/pokemon.json")
@@ -146,6 +150,7 @@ export default function WordleGame() {
       }
 
       setLastGuess(userGuess);
+      setCurrentGuess([]);
     }
 
     if (correctLetters === word.length) {
@@ -158,6 +163,36 @@ export default function WordleGame() {
     form.reset();
   }
 
+  function handleLetterInput(event) {
+    const currentInput = document.querySelector(
+      `input[name=wordleLetter_${attempt}_${currentGuess.length}]`
+    ) as HTMLInputElement;
+    const nextInput = document.querySelector(
+      `input[name=wordleLetter_${attempt}_${currentGuess.length + 1}]`
+    ) as HTMLInputElement;
+
+    if (currentInput) {
+      const value = event.target.textContent;
+      currentInput.value = value;
+      setCurrentGuess([...currentGuess, value]);
+    }
+    if (currentGuess.length < word.length) {
+      nextInput.focus();
+    }
+  }
+
+  function handleLetterDelete() {
+    const prevInput = document.querySelector(
+      `input[name=wordleLetter_${attempt}_${currentGuess.length - 1}]`
+    ) as HTMLInputElement;
+
+    if (prevInput) {
+      prevInput.value = "";
+      prevInput.focus();
+      setCurrentGuess(currentGuess.slice(0, currentGuess.length - 1));
+    }
+  }
+
   return (
     <div className="Wordle-game-board">
       <form className="Previous-Guess">
@@ -166,10 +201,115 @@ export default function WordleGame() {
         ) : null}
       </form>
       <form className="Wordle-form" onSubmit={handleFormSubmit}>
-        <Word word={word} attemptNumber={attempt} />
-        <button className="wordle_submit" type="submit">
-          Submit
-        </button>
+        <Word
+          word={word}
+          setCurrentGuess={setCurrentGuess}
+          currentGuess={currentGuess}
+          attemptNumber={attempt}
+        />
+        <div className="keyboard">
+          <div className="keyboard-row">
+            <div className="letter" onClick={handleLetterInput}>
+              Q
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              W
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              E
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              R
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              T
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              Y
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              U
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              I
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              O
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              P
+            </div>
+          </div>
+          <div className="keyboard-row">
+            <div className="letter" onClick={handleLetterInput}>
+              A
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              S
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              D
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              F
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              G
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              H
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              J
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              K
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              L
+            </div>
+          </div>
+          <div className="keyboard-row">
+            <button className="letter wordle_submit" type="submit">
+              ENTER
+            </button>
+            <div className="letter" onClick={handleLetterInput}>
+              Z
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              X
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              C
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              V
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              B
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              N
+            </div>
+            <div className="letter" onClick={handleLetterInput}>
+              M
+            </div>
+            <div className="letter back" onClick={handleLetterDelete}>
+              <svg
+                width="24"
+                height="16"
+                viewBox="0 0 24 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M22 0H7C6.31 0 5.77 0.311111 5.41 0.782222L0 8L5.41 15.2089C5.77 15.68 6.31 16 7 16H22C23.1 16 24 15.2 24 14.2222V1.77778C24 0.8 23.1 0 22 0ZM22 14.2222H7.07L2.4 8L7.06 1.77778H22V14.2222ZM10.41 12.4444L14 9.25333L17.59 12.4444L19 11.1911L15.41 8L19 4.80889L17.59 3.55556L14 6.74667L10.41 3.55556L9 4.80889L12.59 8L9 11.1911L10.41 12.4444Z"
+                  fill="black"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
       </form>
     </div>
   );
