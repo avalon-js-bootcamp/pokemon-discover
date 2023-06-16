@@ -88,13 +88,13 @@ function PreviousWord({ lastGuess, word }: Props) {
   return (
     <div className="last-guess">
       {lastGuess.map((letter, index) => {
-        if (letter === splitWord[index]) {
+        if (letter.toLowerCase() === splitWord[index]) {
           return (
             <div key={index} className="correct">
               {letter.toUpperCase()}
             </div>
           );
-        } else if (splitWord.includes(letter)) {
+        } else if (splitWord.includes(letter.toLowerCase())) {
           return (
             <div key={index} className="same">
               {letter.toUpperCase()}
@@ -159,6 +159,20 @@ export default function WordleGame() {
         }
       }
 
+      for (let i = 0; i < currentGuess.length; i++) {
+        const keyboardLetter = document.querySelector(
+          `.${currentGuess[i].toUpperCase()}`
+        );
+        let splitWord = word.split("");
+        if (currentGuess[i].toLowerCase() === splitWord[i]) {
+          keyboardLetter?.classList.add("hit");
+        } else if (currentGuess.includes(currentGuess[i])) {
+          keyboardLetter?.classList.add("nearly");
+        } else {
+          keyboardLetter?.classList.add("miss");
+        }
+      }
+
       setLastGuess(userGuess);
       setCurrentGuess([]);
     }
@@ -219,63 +233,63 @@ export default function WordleGame() {
         />
         <div className="keyboard">
           <div className="keyboard-row">
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter Q" onClick={handleLetterInput}>
               Q
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter W" onClick={handleLetterInput}>
               W
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter E" onClick={handleLetterInput}>
               E
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter R" onClick={handleLetterInput}>
               R
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter T" onClick={handleLetterInput}>
               T
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter Y" onClick={handleLetterInput}>
               Y
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter U" onClick={handleLetterInput}>
               U
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter I" onClick={handleLetterInput}>
               I
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter O" onClick={handleLetterInput}>
               O
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter P" onClick={handleLetterInput}>
               P
             </div>
           </div>
           <div className="keyboard-row">
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter A" onClick={handleLetterInput}>
               A
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter S" onClick={handleLetterInput}>
               S
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter D" onClick={handleLetterInput}>
               D
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter F" onClick={handleLetterInput}>
               F
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter G" onClick={handleLetterInput}>
               G
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter H" onClick={handleLetterInput}>
               H
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter J" onClick={handleLetterInput}>
               J
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter K" onClick={handleLetterInput}>
               K
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter L" onClick={handleLetterInput}>
               L
             </div>
           </div>
@@ -283,25 +297,25 @@ export default function WordleGame() {
             <button className="letter wordle_submit" type="submit">
               ENTER
             </button>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter Z" onClick={handleLetterInput}>
               Z
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter X" onClick={handleLetterInput}>
               X
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter C" onClick={handleLetterInput}>
               C
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter V" onClick={handleLetterInput}>
               V
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter B" onClick={handleLetterInput}>
               B
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter N" onClick={handleLetterInput}>
               N
             </div>
-            <div className="letter" onClick={handleLetterInput}>
+            <div className="letter M" onClick={handleLetterInput}>
               M
             </div>
             <div className="letter back" onClick={handleLetterDelete}>

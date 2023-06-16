@@ -131,3 +131,18 @@
 .back {
   width: 64px;
 }
+
+.miss {
+  color: white;
+  background-color: #797c7e;
+}
+
+.nearly {
+  color: white;
+  background-color: #c6b566;
+}
+
+.hit {
+  color: white;
+  background-color: #5ab75f;
+}
