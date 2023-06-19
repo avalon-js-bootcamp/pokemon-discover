@@ -1,54 +1,54 @@
 import Image from "next/image";
 import Chat from "./chat";
 
-
-import "./picture.css"
+import "./picture.css";
 export default function Picture() {
-    const randomPokemonNumber = Math.floor(Math.random() * 151);
-    const poke = randomPokemonNumber.toString().padStart(3, "0");
-    const randomBackgroundNumber = Math.floor((Math.random() * 23)+1);
-    return (
-        <div className="main">
-        <div className="banner">
-         {" "}
-         <div className="tittle">Who is that Pokemon?</div>
-        </div>
-      
-           <div className="poke-view">
-         <div className="run">
-           <button>
-             <img
-               width="20"
-               height="20"
-               src="/images/icons/runaway.svg"
-               alt="running--v1"
-             />{" "}
-             Run Away
-           </button>
-         </div>
-          <div className="background">
-         <Image 
-           src={`/images/backgrounds/background_${randomBackgroundNumber}.jpg`}
-           alt="Next.js Logo"
-           width={600}
-           height={808}
-           priority
-         /></div>
-         <div className="pokemon-images">
-           <Image
-           className="hidden"
-             src={`/images/pokemon/${poke}.png`}
-             alt="Next.js Logo"
-             width={300}
-             height={300}
-             priority
-           />{" "}
-           <div className="oval-shadow"></div>
-         </div>
- 
-           </div>        
- <div className=""><Chat/></div>
+  const randomPokemonNumber = Math.floor(Math.random() * 151);
+  const poke = randomPokemonNumber.toString().padStart(3, "0");
+  const randomBackgroundNumber = Math.floor(Math.random() * 23 + 1);
+  return (
+    <div className="main">
+      <div className="banner">
+        {" "}
+        <div className="tittle">Who is that Pokemon?</div>
+      </div>
 
-       
-     </div>);
+      <div className="poke-view">
+        <div className="run">
+          <button>
+            <img
+              width="20"
+              height="20"
+              src="/images/icons/runaway.svg"
+              alt="running--v1"
+            />{" "}
+            Run Away
+          </button>
+        </div>
+        <div className="background">
+          <Image
+            src={`/images/backgrounds/background_${randomBackgroundNumber}.jpg`}
+            alt="Next.js Logo"
+            width={600}
+            height={808}
+            priority
+          />
+        </div>
+        <div className="pokemon-images">
+          <Image
+            className="hidden"
+            src={`/images/pokemon/${poke}.png`}
+            alt="Next.js Logo"
+            width={300}
+            height={300}
+            priority
+          />{" "}
+          <div className="oval-shadow"></div>
+        </div>
+      </div>
+      <div className="">
+        <Chat />
+      </div>
+    </div>
+  );
 }
