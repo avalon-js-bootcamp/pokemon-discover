@@ -85,6 +85,20 @@ type Props = {
 
 function PreviousWord({ lastGuess, word }: Props) {
   let splitWord = word.split("");
+
+  for (let i = 0; i < lastGuess.length; i++) {
+    const keyboardLetter = document.querySelector(
+      `.${lastGuess[i].toUpperCase()}`
+    );
+    let splitWord = word.split("");
+    if (lastGuess[i].toLowerCase() === splitWord[i]) {
+      keyboardLetter?.classList.add("hit");
+    } else if (splitWord.includes(lastGuess[i].toLowerCase())) {
+      keyboardLetter?.classList.add("nearly");
+    } else {
+      keyboardLetter?.classList.add("miss");
+    }
+  }
   return (
     <div className="last-guess">
       {lastGuess.map((letter, index) => {
@@ -156,20 +170,6 @@ export default function WordleGame() {
           userGuess.push(value);
         } else {
           userGuess.push(value);
-        }
-      }
-
-      for (let i = 0; i < currentGuess.length; i++) {
-        const keyboardLetter = document.querySelector(
-          `.${currentGuess[i].toUpperCase()}`
-        );
-        let splitWord = word.split("");
-        if (currentGuess[i].toLowerCase() === splitWord[i]) {
-          keyboardLetter?.classList.add("hit");
-        } else if (currentGuess.includes(currentGuess[i])) {
-          keyboardLetter?.classList.add("nearly");
-        } else {
-          keyboardLetter?.classList.add("miss");
         }
       }
 
