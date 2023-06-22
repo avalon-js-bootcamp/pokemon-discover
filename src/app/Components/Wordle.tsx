@@ -5,7 +5,7 @@ import React, { useState, useEffect, useMemo } from "react";
 interface LetterProps {
   attemptNumber: number;
   letterIndex: number;
-  onType: (arg0: number) => void;
+  onType: (arg0: number, event: any) => void;
 }
 
 function Letter(props: LetterProps) {
@@ -187,7 +187,7 @@ export default function WordleGame() {
     form.reset();
   }
 
-  function handleLetterInput(event) {
+  function handleLetterInput(event: any) {
     const currentInput = document.querySelector(
       `input[name=wordleLetter_${attempt}_${currentGuess.length}]`
     ) as HTMLInputElement;
