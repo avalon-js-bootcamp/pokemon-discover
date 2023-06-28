@@ -84,13 +84,13 @@
   flex-direction: column;
   justify-content: space-between;
   position: absolute;
-  background-color: #ffffff;
+  background-color: white;
   width: 50%;
   min-width: 200px;
-  transition: left 0.5s;
+  transition: left 0.8s;
   margin-top: 10px;
-  transition: 0.5s;
   left: 0;
+  z-index: 2;
 }
 
 .navNotExpanded {
@@ -98,14 +98,7 @@
   top: 0;
   bottom: 0;
   position: absolute;
-}
-
-.greyBox {
-  background-image: linear-gradient(hsl(233, 26%, 24%), white);
-  opacity: 0.8;
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  transition: 0.8s;
 }
 
 @media (max-width: 768px) {
@@ -138,6 +131,16 @@
 
   .hamburgerIcon {
     height: 40px;
+  }
+
+  .greyScreen {
+    background-image: linear-gradient(hsl(233, 27%, 18%), white);
+    opacity: 0.8;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: 1s;
+    z-index: 1;
   }
 }
 
@@ -180,14 +183,10 @@
   }
 
   .closeIcon,
+  .hamburgerIcon,
   .accountIcon,
   .navMobileContainer {
     display: none;
-  }
-
-  .hamburgerIcon {
-    visibility: hidden;
-    position: absolute;
   }
 
   .header {

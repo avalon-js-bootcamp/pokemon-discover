@@ -10,6 +10,7 @@ function Navbar() {
 
   return (
     <>
+      <div className={isNavExpanded ? styles.greyScreen : "none"}></div>
       <div className={styles.navMobileContainer}>
         <div
           className={isNavExpanded ? styles.navExpanded : styles.navNotExpanded}
