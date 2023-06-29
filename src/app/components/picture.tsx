@@ -7,11 +7,13 @@ export default function Picture() {
   const poke = randomPokemonNumber.toString().padStart(3, "0");
   const randomBackgroundNumber = Math.floor(Math.random() * 23 + 1);
   return (
+  <div className="outerBox"><div className="bannerBox"><div className="banner">
+        <div className="title">Who is that Pokemon?</div>
+        </div><div className="banner1"></div>
+     </div>
+    
     <div className="main">
-      <div className="banner">
-        {" "}
-        <div className="tittle">Who is that Pokemon?</div>
-      </div>
+      
 
       <div className="poke-view">
         <div className="run">
@@ -46,9 +48,10 @@ export default function Picture() {
           <div className="oval-shadow"></div>
         </div>
       </div>
-      <div className="">
+      <div className="Talking">
         <Chat />
       </div>
+    </div>
     </div>
   );
 }

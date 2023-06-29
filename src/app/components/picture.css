@@ -1,61 +1,89 @@
+.outerBox {
+  width: 100vw;
+  height: 100vh;
+}
 .main {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  position: absolute;
-  width: 1200px;
-  height: 808px;
-}
-
-.banner {
-  display: block;
-  width: 724px;
-  height: 100px;
-  left: 71%;
-  text-align: center;
-  background: transparent;
-  position: absolute;
-  top: 5px;
-  z-index: 1;
-  border-left-color: transparent white;
-  clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.banner:before,
-.banner:after {
-  content: "";
-  position: absolute;
-}
-
-.banner:before {
-  display: block;
-  width: auto;
-  height: 83px;
-  background: #000000;
-  position: relative;
-  box-shadow: 0px 4px 4px #00000040;
-}
-
-.banner:after {
-  position: relative;
-  height: 0;
-  width: 5px;
-  right: -358px;
-  bottom: 38px;
-  border-top: 10px solid #000000;
-  border-right: 10px solid transparent;
-}
-
-.tittle {
-  color: white;
-  position: relative;
-  font-weight: 600;
-  font-size: 32px;
-  line-height: 48px;
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.bannerBox {
+  display: flex;
+  flex-direction: column;
+}
+.banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
-  top: -66px;
-  left: 30%;
+  width: 724px;
+  height: 79px;
+  background-color: #000000;
+  border-left-color: transparent #ffffff;
+  clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 1;
+  left: 45%;
+  top: 45px;
+  position: relative;
+}
+
+.banner1 {
+  position: relative;
+  top: 45px;
+  left: 81.8%;
+  background-color: #000000;
+  width: 17px;
+  height: 13px;
+  clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+}
+
+.title {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 1023px) {
+  .main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .banner {
+    width: 500px;
+    height: 79px;
+    background-color: #000000;
+    left: 32.4%;
+  }
+  .banner1 {
+    left: 79.4%;
+    top: 45px;
+    background-color: #000000;
+    width: 17px;
+    height: 13px;
+    clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+  }
+  .title {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .banner {
+    width: 500px;
+    height: 79px;
+    background-color: #000000;
+    left: 26%;
+  }
+  .banner1 {
+    left: 89%;
+    top: 45px;
+    background-color: #000000;
+    width: 17px;
+    height: 13px;
+    clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+  }
 }
 
 .poke-view {
@@ -64,7 +92,6 @@
   flex-direction: row;
   position: relative;
   top: 5%;
-  left: 205px;
   width: 600px;
   height: 808px;
 }
@@ -77,14 +104,14 @@
 .run button {
   border: none;
   padding: 5px;
-  background-color: white;
+  background-color: #ffffff;
   border-radius: 20px;
   padding: 8px;
   font-size: 20px;
   box-shadow: 0 3px #0000003b;
-  position: relative;
+  position: absolute;
   top: 40px;
-  left: 200px;
+  left: 20px;
   width: 155px;
 }
 
@@ -106,7 +133,7 @@
   align-items: center;
   filter: drop-shadow(0 0 #00000067);
   top: 50%;
-  left: 55%;
+  left: 25%;
 }
 
 .hidden {
@@ -136,4 +163,29 @@
   max-width: 300px;
   bottom: 90px;
   z-index: -1;
+}
+@media only screen and (max-width: 1023px) {
+  .pokemon-images {
+    top: 40%;
+    left: 25%;
+  }
+  .run button {
+    top: 88%;
+    left: 35%;
+    z-index: 1;
+  }
+  .background img {
+    width: 600px;
+    height: 600px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: none;
+  }
+  .background {
+    width: 600px;
+    height: 600px;
+  }
+  .poke-view {
+    width: 600px;
+    height: 600px;
+  }
 }

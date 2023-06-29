@@ -4,8 +4,8 @@ import Image from "next/image";
 export default function Chat() {
   return (
     <div className="wordle">
+      <div className="nameplate">Profressor Hazel</div>
       <div className="conversation">
-        <div className="nameplate">Profressor Hazel</div>
         <div className="chatbox">
           Ah, welcome to my lab! Can you guess the name of this fascinating
           Pokémon we have here?
