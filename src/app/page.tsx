@@ -1,5 +1,8 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+
+import WordleGame from "./Components/Wordle";
+
 import "./nav.module.css";
 import Navbar from "./nav";
 
@@ -18,6 +21,9 @@ export default function Home() {
           height={300}
           priority
         />
+      </div>
+      <div>
+        <WordleGame></WordleGame>
       </div>
     </main>
   );
