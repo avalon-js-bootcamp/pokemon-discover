@@ -1,13 +1,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+
 import WordleGame from "./Components/Wordle";
+
+import "./nav.module.css";
+import Navbar from "./nav";
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>Homepage</p>
-      </div>
+      <div className={styles.description}></div>
+
+      <Navbar />
 
       <div className={styles.center}>
         <Image
