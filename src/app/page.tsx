@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import "./components/page.css";
+import Picture from "./components/picture";
 
 import WordleGame from "./Components/Wordle";
 
@@ -12,6 +14,8 @@ export default function Home() {
       <div className={styles.description}></div>
 
       <Navbar />
+      
+      <Picture />
 
       <div className={styles.center}>
         <Image
