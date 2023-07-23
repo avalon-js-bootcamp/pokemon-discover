@@ -8,12 +8,18 @@
   justify-content: center;
 }
 .bannerBox {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 92px;
+  width: 724px;
+  position: relative;
+  left: 45%;
+  top: 5%;
+  z-index: 1;
 }
 .banner {
+  grid-row-start: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 724px;
@@ -22,19 +28,17 @@
   border-left-color: transparent #ffffff;
   clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
-  left: 45%;
-  top: 45px;
   position: relative;
 }
 
 .banner1 {
-  position: relative;
-  top: 45px;
-  left: 81.8%;
+  grid-row-start: 2;
   background-color: #000000;
   width: 17px;
   height: 13px;
   clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+  position: relative;
+  left: 97.6%;
 }
 
 .title {
@@ -49,19 +53,21 @@
     justify-content: center;
     align-items: center;
   }
-
+  .bannerBox {
+    width: 500px;
+    height: 92px;
+    left: 32%;
+  }
   .banner {
     width: 500px;
     height: 79px;
     background-color: #000000;
-    left: 32.4%;
   }
   .banner1 {
-    left: 79.4%;
-    top: 45px;
     background-color: #000000;
     width: 17px;
     height: 13px;
+    left: 96.5%;
     clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
   }
   .title {
@@ -74,15 +80,14 @@
     width: 500px;
     height: 79px;
     background-color: #000000;
-    left: 26%;
+    left: -8.8%;
   }
   .banner1 {
-    left: 89%;
-    top: 45px;
     background-color: #000000;
     width: 17px;
     height: 13px;
     clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+    left: 87.5%;
   }
 }
 

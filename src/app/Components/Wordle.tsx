@@ -1,6 +1,7 @@
 "use client";
 import "./Wordle.css";
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { PokemonContext } from "./PokemonContext";
 
 interface LetterProps {
   attemptNumber: number;
@@ -127,22 +128,11 @@ function PreviousWord({ lastGuess, word }: Props) {
 }
 
 export default function WordleGame() {
-  const [word, setWord] = useState("");
+  const contextData = useContext(PokemonContext);
+  const word = contextData.word;
   const [attempt, setAttempt] = useState(1);
   const [lastGuess, setLastGuess] = useState<string[]>([]);
   const [currentGuess, setCurrentGuess] = useState<string[]>([]);
-
-  useEffect(() => {
-    fetch("https://pokemon-explore.pages.dev/data/pokemon.json")
-      .then((response) => response.json())
-      .then((json) => {
-        const randomNumber = Math.floor(Math.random() * 151);
-        const pokemon = json[`${randomNumber}`].name;
-        console.log(pokemon);
-        setWord(pokemon);
-      })
-      .catch((error) => console.error(error));
-  }, []);
 
   function handleFormSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -179,8 +169,10 @@ export default function WordleGame() {
 
     if (correctLetters === word.length) {
       alert("You won");
+      location.reload();
     } else if (attempt === MAX_ATTEMPTS) {
       alert(`${word} Ran Away`);
+      location.reload();
     } else {
       setAttempt(attempt + 1);
     }

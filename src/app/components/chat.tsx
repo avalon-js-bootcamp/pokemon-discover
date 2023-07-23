@@ -1,5 +1,5 @@
 import "./chat.css";
-
+import WordleGame from "./Wordle";
 import Image from "next/image";
 export default function Chat() {
   return (
@@ -19,6 +19,9 @@ export default function Chat() {
             priority
           />
         </div>
+      </div>
+      <div>
+        <WordleGame></WordleGame>
       </div>
     </div>
   );

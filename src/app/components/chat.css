@@ -6,6 +6,7 @@
   position: relative;
   padding-top: 60px;
 }
+
 @media only screen and(max-width: 1023px) {
   .wordle {
     height: 688px;
