@@ -1,11 +1,19 @@
 "use client";
-import { createContext, useState, useEffect } from "react";
 
-export const PokemonContext = createContext({});
+import { createContext, useState, useEffect, PropsWithChildren } from "react";
 
-export const PokemonProvider = ({ children }) => {
+type PokemonContext = {
+  pokemonID: number;
+  word: string;
+};
+
+export const PokemonContext = createContext<PokemonContext>(
+  {} as PokemonContext
+);
+
+export const PokemonProvider = ({ children }: PropsWithChildren) => {
   const [word, setWord] = useState("");
-  const [pokemonID, setPokemonID] = useState("");
+  const [pokemonID, setPokemonID] = useState(0);
 
   useEffect(() => {
     fetch("https://pokemon-explore.pages.dev/data/pokemon.json")

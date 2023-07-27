@@ -1,22 +1,26 @@
 .outerBox {
-  width: 100vw;
-  height: 100vh;
+  max-width: 100%;
+  padding: 64px 10px;
 }
+
 .main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: relative;
 }
+
 .bannerBox {
   display: grid;
   grid-template-rows: 1fr 1fr;
   height: 92px;
   width: 724px;
-  position: relative;
-  left: 45%;
-  top: 5%;
   z-index: 1;
+  position: absolute;
+  top: -40px;
+  right: 324px;
 }
+
 .banner {
   grid-row-start: 1;
   display: flex;
@@ -28,7 +32,7 @@
   border-left-color: transparent #ffffff;
   clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
-  position: relative;
+  position: absolute;
 }
 
 .banner1 {
@@ -37,8 +41,9 @@
   width: 17px;
   height: 13px;
   clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
-  position: relative;
-  left: 97.6%;
+  position: absolute;
+  right: 0;
+  top: 33px;
 }
 
 .title {
@@ -52,22 +57,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 1023px;
+    position: relative;
   }
+
   .bannerBox {
     width: 500px;
-    height: 92px;
-    left: 32%;
+    top: -40px;
+    position: absolute;
+    right: 194px;
   }
+
   .banner {
     width: 500px;
     height: 79px;
     background-color: #000000;
   }
+
   .banner1 {
     background-color: #000000;
     width: 17px;
     height: 13px;
-    left: 96.5%;
     clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
   }
   .title {
@@ -76,18 +86,23 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .main {
+    width: 768px;
+  }
+  .bannerBox {
+    top: -40px;
+    right: 69px;
+  }
   .banner {
     width: 500px;
     height: 79px;
     background-color: #000000;
-    left: -8.8%;
   }
   .banner1 {
     background-color: #000000;
     width: 17px;
     height: 13px;
     clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
-    left: 87.5%;
   }
 }
 
@@ -98,7 +113,6 @@
   position: relative;
   top: 5%;
   width: 600px;
-  height: 808px;
 }
 
 .background img {
@@ -152,11 +166,11 @@
 }
 
 .hidden2 {
-  filter: contrast(0) brightness(0) blur(10px);
+  filter: contrast(0) brightness(0) blur(15px);
 }
 
 .hidden3 {
-  filter: contrast(0) brightness(0) blur(5px);
+  filter: contrast(0) brightness(0) blur(10px);
 }
 
 .oval-shadow {

@@ -11,18 +11,20 @@ import "./picture.css";
 
 export default function Picture() {
   const contextData = useContext(PokemonContext);
+
   const poke = contextData.pokemonID.toString().padStart(3, "0");
   const randomBackgroundNumber = Math.floor(Math.random() * 23 + 1);
+
   return (
     <div className="outerBox">
-      <div className="bannerBox">
-        <div className="banner">
-          <div className="title">Who is that Pokemon?</div>
-        </div>
-        <div className="banner1"></div>
-      </div>
-
       <div className="main">
+        <div className="bannerBox">
+          <div className="banner">
+            <div className="title">Who is that Pokemon?</div>
+          </div>
+          <div className="banner1"></div>
+        </div>
+
         <div className="poke-view">
           <div className="run">
             <button>
