@@ -1,19 +1,29 @@
 .outerBox {
-  width: 100vw;
-  height: 100vh;
+  max-width: 100%;
+  padding: 64px 10px;
 }
+
 .main {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: relative;
 }
+
 .bannerBox {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  height: 92px;
+  width: 724px;
+  z-index: 1;
+  position: absolute;
+  top: -40px;
+  right: 324px;
 }
+
 .banner {
+  grid-row-start: 1;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 724px;
@@ -22,19 +32,18 @@
   border-left-color: transparent #ffffff;
   clip-path: polygon(45px 0, 100% 0, 100% 100%, 0 100%);
   z-index: 1;
-  left: 45%;
-  top: 45px;
-  position: relative;
+  position: absolute;
 }
 
 .banner1 {
-  position: relative;
-  top: 45px;
-  left: 81.8%;
+  grid-row-start: 2;
   background-color: #000000;
   width: 17px;
   height: 13px;
   clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+  position: absolute;
+  right: 0;
+  top: 33px;
 }
 
 .title {
@@ -48,17 +57,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 1023px;
+    position: relative;
+  }
+
+  .bannerBox {
+    width: 500px;
+    top: -40px;
+    position: absolute;
+    right: 194px;
   }
 
   .banner {
     width: 500px;
     height: 79px;
     background-color: #000000;
-    left: 32.4%;
   }
+
   .banner1 {
-    left: 79.4%;
-    top: 45px;
     background-color: #000000;
     width: 17px;
     height: 13px;
@@ -70,15 +86,19 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .main {
+    width: 768px;
+  }
+  .bannerBox {
+    top: -40px;
+    right: 69px;
+  }
   .banner {
     width: 500px;
     height: 79px;
     background-color: #000000;
-    left: 26%;
   }
   .banner1 {
-    left: 89%;
-    top: 45px;
     background-color: #000000;
     width: 17px;
     height: 13px;
@@ -93,7 +113,6 @@
   position: relative;
   top: 5%;
   width: 600px;
-  height: 808px;
 }
 
 .background img {
@@ -147,11 +166,11 @@
 }
 
 .hidden2 {
-  filter: contrast(0) brightness(0) blur(10px);
+  filter: contrast(0) brightness(0) blur(15px);
 }
 
 .hidden3 {
-  filter: contrast(0) brightness(0) blur(5px);
+  filter: contrast(0) brightness(0) blur(10px);
 }
 
 .oval-shadow {

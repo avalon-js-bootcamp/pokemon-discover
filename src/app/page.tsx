@@ -1,9 +1,7 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import "./components/page.css";
 import Picture from "./components/picture";
-
-import WordleGame from "./Components/Wordle";
+import { PokemonProvider } from "./components/PokemonContext";
 
 import "./nav.module.css";
 import Navbar from "./nav";
@@ -13,22 +11,10 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}></div>
 
-      <Navbar />
-      
-      <Picture />
-
-      <div className={styles.center}>
-        <Image
-          src="/images/pokemon/001.png"
-          alt="Next.js Logo"
-          width={300}
-          height={300}
-          priority
-        />
-      </div>
-      <div>
-        <WordleGame></WordleGame>
-      </div>
+      <PokemonProvider>
+        <Navbar />
+        <Picture />
+      </PokemonProvider>
     </main>
   );
 }
