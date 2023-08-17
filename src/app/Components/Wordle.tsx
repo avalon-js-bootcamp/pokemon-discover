@@ -22,6 +22,7 @@ function Letter(props: LetterProps) {
       name={`wordleLetter_${props.attemptNumber}_${props.letterIndex}`}
       maxLength={1}
       required
+      disabled
     />
   );
 }
@@ -138,16 +139,15 @@ export default function WordleGame() {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const picture = document.querySelector(".hidden");
 
     let userGuess = [];
-
     let correctLetters = 0;
+    let allInputsFilled = true;
 
     for (let i = 0; i < word.length; i++) {
       const letter = word[i];
-
       const inputName = `wordleLetter_${attempt}_${i}`;
-
       let letterInput: HTMLInputElement | null = form.elements.namedItem(
         inputName
       ) as HTMLInputElement;
@@ -155,27 +155,49 @@ export default function WordleGame() {
       if (letterInput) {
         const value = letterInput.value;
 
+        if (!value) {
+          allInputsFilled = false;
+        }
+
         if (value.toLowerCase() === letter) {
           correctLetters++;
-          userGuess.push(value);
-        } else {
-          userGuess.push(value);
         }
-      }
 
-      setLastGuess(userGuess);
-      setCurrentGuess([]);
+        userGuess.push(value);
+      }
     }
+
+    if (!allInputsFilled) {
+      alert(
+        "User ! This isnt the time to use that! Come back after you filled all the letters"
+      );
+      return;
+    }
+
+    setLastGuess(userGuess);
+    setCurrentGuess([]);
 
     if (correctLetters === word.length) {
-      alert("You won");
-      location.reload();
+      picture.className = "";
+      setTimeout(() => {
+        alert(`${word} was caught!`);
+      }, 500);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     } else if (attempt === MAX_ATTEMPTS) {
-      alert(`${word} Ran Away`);
-      location.reload();
+      picture.className = "";
+      setTimeout(() => {
+        alert(`${word} Ran Away`);
+      }, 500);
+      setTimeout(() => {
+        location.reload();
+      }, 2000);
     } else {
+      picture.classList.add(`hidden${attempt}`);
       setAttempt(attempt + 1);
     }
+
     form.reset();
   }
 

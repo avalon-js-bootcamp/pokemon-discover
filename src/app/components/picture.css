@@ -83,26 +83,28 @@
   .title {
     font-size: 28px;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .main {
-    width: 768px;
+  .pokemon-images {
+    top: 40%;
+    left: 25%;
   }
-  .bannerBox {
-    top: -40px;
-    right: 69px;
+  .run button {
+    top: 88%;
+    left: 35%;
+    z-index: 1;
   }
-  .banner {
-    width: 500px;
-    height: 79px;
-    background-color: #000000;
+  .background img {
+    width: 600px;
+    height: 600px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: none;
   }
-  .banner1 {
-    background-color: #000000;
-    width: 17px;
-    height: 13px;
-    clip-path: polygon(0 0, 100% 0, 0 90%, 0 100%);
+  .background {
+    width: 600px;
+    height: 600px;
+  }
+  .poke-view {
+    width: 600px;
+    height: 600px;
   }
 }
 
@@ -173,6 +175,10 @@
   filter: contrast(0) brightness(0) blur(10px);
 }
 
+.hidden4 {
+  filter: contrast(0) brightness(0) blur(5px);
+}
+
 .oval-shadow {
   position: relative;
   height: 70px;
@@ -183,28 +189,43 @@
   bottom: 90px;
   z-index: -1;
 }
-@media only screen and (max-width: 1023px) {
-  .pokemon-images {
-    top: 40%;
-    left: 25%;
+
+@media only screen and (max-width: 400px) {
+  .main {
+    width: 100%;
   }
-  .run button {
-    top: 88%;
-    left: 35%;
-    z-index: 1;
+  .background {
+    width: 400px;
+    height: 400px;
   }
   .background img {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     border-radius: 10px 10px 0 0;
     box-shadow: none;
   }
-  .background {
-    width: 600px;
-    height: 600px;
+  .bannerBox {
+    top: -40px;
+    right: 25px;
+  }
+  .banner {
+    width: 300px;
+    height: 79px;
+    background-color: #000000;
+  }
+  .run button {
+    top: 88%;
+    left: 30%;
+    z-index: 1;
   }
   .poke-view {
-    width: 600px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
+  }
+  .pokemon-images {
+    width: 300px;
+    height: 300px;
+    top: 60px;
+    left: 50px;
   }
 }

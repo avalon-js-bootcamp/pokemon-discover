@@ -33,7 +33,7 @@ export default function Picture() {
                 height="20"
                 src="/images/icons/runaway.svg"
                 alt="running--v1"
-              />{" "}
+              />
               Run Away
             </button>
           </div>
