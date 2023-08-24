@@ -128,7 +128,11 @@ function PreviousWord({ lastGuess, word }: Props) {
   );
 }
 
-export default function WordleGame() {
+type PropTypes = {
+  onGameWin: () => void;
+};
+
+export default function WordleGame(props: PropTypes) {
   const contextData = useContext(PokemonContext);
   const word = contextData.word;
   const [attempt, setAttempt] = useState(1);
@@ -173,7 +177,7 @@ export default function WordleGame() {
 
     if (!allInputsFilled) {
       alert(
-        "User ! This isnt the time to use that! Come back after you filled all the letters"
+        "User! This isnt the time to use that! Come back after you filled all the letters"
       );
       return;
     }
@@ -183,12 +187,18 @@ export default function WordleGame() {
 
     if (correctLetters === word.length) {
       picture.className = "";
-      setTimeout(() => {
-        alert(`${word} was caught!`);
-      }, 500);
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+
+      // Change chat state to winner
+      // Code is here - change state to winner
+      props.onGameWin();
+
+      // setTimeout(() => {
+      //   alert(`${word} was caught!`);
+      // }, 500);
+
+      // setTimeout(() => {
+      //   location.reload();
+      // }, 2000);
     } else if (attempt === MAX_ATTEMPTS) {
       picture.className = "";
       setTimeout(() => {

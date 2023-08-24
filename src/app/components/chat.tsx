@@ -1,30 +1,47 @@
 import "./chat.css";
 import WordleGame from "./Wordle";
-import Image from "next/image";
+import { ChatBubble } from "./chat-bubble";
+import { useState } from "react";
+
 export default function Chat() {
-  console.log("Hello");
+  const [gameState, setGameState] = useState("playing");
+
+  const handleWin = () => {
+    setGameState("winner");
+  };
+
+  const handleRestart = () => {
+    setGameState("playing");
+  };
 
   return (
     <div className="wordle">
-      <div className="nameplate">Profressor Hazel</div>
-      <div className="conversation">
-        <div className="chatbox">
-          Ah, welcome to my lab! Can you guess the name of this fascinating
-          Pokémon we have here?
-        </div>
-        <div className="portrait">
-          <Image
-            src={"/images/icons/profressor.jpg"}
-            width={130}
-            height={130}
-            alt="Next.js Logo"
-            priority
-          />
-        </div>
-      </div>
-      <div>
-        <WordleGame></WordleGame>
-      </div>
+      {gameState === "playing" && (
+        <>
+          <div>
+            <ChatBubble
+              name="Professor Hazel"
+              message="Ah, welcome to my lab! Can you guess the name of this fascinating
+Pokémon we have here?"
+            />
+          </div>
+          <div>
+            <WordleGame onGameWin={handleWin} />
+          </div>
+        </>
+      )}
+
+      {gameState === "winner" && (
+        <>
+          <div>
+            <ChatBubble
+              name="Professor Hazel"
+              message="Congratulations! You guessed correctly! You are a true Pokémon Master!"
+            />
+          </div>
+          <button onClick={handleRestart}>Restart</button>
+        </>
+      )}
     </div>
   );
 }
