@@ -2,6 +2,8 @@ import "./chat.css";
 import WordleGame from "./Wordle";
 import Image from "next/image";
 export default function Chat() {
+  console.log("Hello");
+
   return (
     <div className="wordle">
       <div className="nameplate">Profressor Hazel</div>
