@@ -141,6 +141,10 @@ export default function WordleGame() {
     const form = event.currentTarget;
     const picture = document.querySelector(".hidden");
 
+    if (picture === null) {
+      return;
+    }
+
     let userGuess = [];
     let correctLetters = 0;
     let allInputsFilled = true;
