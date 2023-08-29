@@ -14,6 +14,7 @@ export default function Chat() {
 
   const handleRestart = () => {
     setGameState("playing");
+    location.reload();
   };
 
   return (
@@ -27,9 +28,6 @@ export default function Chat() {
 Pokémon we have here?"
             />
           </div>
-          <div>
-            <WordleGame gameState={handleGameStateChange} />
-          </div>
         </>
       )}
 
@@ -41,10 +39,13 @@ Pokémon we have here?"
               message="User! This isnt the time to use that! Only use ENTER after you have filled all the letters"
             />
           </div>
-          <div>
-            <WordleGame gameState={handleGameStateChange} />
-          </div>
         </>
+      )}
+
+      {(gameState === "playing" || gameState === "illegal") && (
+        <div>
+          <WordleGame gameState={handleGameStateChange} />
+        </div>
       )}
 
       {gameState === "winner" && (
