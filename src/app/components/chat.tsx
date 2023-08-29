@@ -36,7 +36,7 @@ Pokémon we have here?"
           <div>
             <ChatBubble
               name="Professor Hazel"
-              message="User! This isnt the time to use that! Only use ENTER after you have filled all the letters"
+              message="User! This isnt the time to use that! Only use ENTER after you have filled all the letters."
             />
           </div>
         </>
@@ -53,7 +53,9 @@ Pokémon we have here?"
           <div>
             <ChatBubble
               name="Professor Hazel"
-              message={`All Right! ${word} was caught! Would you like to try catch another`}
+              message={`All Right! ${
+                word.charAt(0).toUpperCase() + word.slice(1)
+              } was caught! Would you like to try catch another?`}
             />
           </div>
           <button onClick={handleRestart}>Restart</button>
@@ -65,7 +67,9 @@ Pokémon we have here?"
           <div>
             <ChatBubble
               name="Professor Hazel"
-              message={`${word} escaped using Run Away`}
+              message={`${
+                word.charAt(0).toUpperCase() + word.slice(1)
+              } escaped using Run Away`}
             />
           </div>
           <button onClick={handleRestart}>Restart</button>
