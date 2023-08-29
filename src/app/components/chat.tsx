@@ -69,7 +69,7 @@ Pokémon we have here?"
               name="Professor Hazel"
               message={`${
                 word.charAt(0).toUpperCase() + word.slice(1)
-              } escaped using Run Away`}
+              } escaped using Run Away, Do you want to try again?`}
             />
           </div>
           <button onClick={handleRestart}>Restart</button>
