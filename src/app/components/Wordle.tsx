@@ -1,6 +1,6 @@
 "use client";
 import "./Wordle.css";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { PokemonContext } from "./PokemonContext";
 
 interface LetterProps {
@@ -129,7 +129,7 @@ function PreviousWord({ lastGuess, word }: Props) {
 }
 
 type PropTypes = {
-  onGameWin: () => void;
+  gameState: (newGameState: string) => void;
 };
 
 export default function WordleGame(props: PropTypes) {
@@ -176,9 +176,7 @@ export default function WordleGame(props: PropTypes) {
     }
 
     if (!allInputsFilled) {
-      alert(
-        "User! This isnt the time to use that! Come back after you filled all the letters"
-      );
+      props.gameState("illegal");
       return;
     }
 
@@ -187,26 +185,10 @@ export default function WordleGame(props: PropTypes) {
 
     if (correctLetters === word.length) {
       picture.className = "";
-
-      // Change chat state to winner
-      // Code is here - change state to winner
-      props.onGameWin();
-
-      // setTimeout(() => {
-      //   alert(`${word} was caught!`);
-      // }, 500);
-
-      // setTimeout(() => {
-      //   location.reload();
-      // }, 2000);
+      props.gameState("winner");
     } else if (attempt === MAX_ATTEMPTS) {
       picture.className = "";
-      setTimeout(() => {
-        alert(`${word} Ran Away`);
-      }, 500);
-      setTimeout(() => {
-        location.reload();
-      }, 2000);
+      props.gameState("failed");
     } else {
       picture.classList.add(`hidden${attempt}`);
       setAttempt(attempt + 1);

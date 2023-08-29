@@ -1,13 +1,15 @@
 import "./chat.css";
 import WordleGame from "./Wordle";
 import { ChatBubble } from "./chat-bubble";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { PokemonContext } from "./PokemonContext";
 
 export default function Chat() {
+  const word = useContext(PokemonContext).word;
   const [gameState, setGameState] = useState("playing");
 
-  const handleWin = () => {
-    setGameState("winner");
+  const handleGameStateChange = (newGameState: string) => {
+    setGameState(newGameState);
   };
 
   const handleRestart = () => {
@@ -26,7 +28,21 @@ Pokémon we have here?"
             />
           </div>
           <div>
-            <WordleGame onGameWin={handleWin} />
+            <WordleGame gameState={handleGameStateChange} />
+          </div>
+        </>
+      )}
+
+      {gameState === "illegal" && (
+        <>
+          <div>
+            <ChatBubble
+              name="Professor Hazel"
+              message="User! This isnt the time to use that! Only use ENTER after you have filled all the letters"
+            />
+          </div>
+          <div>
+            <WordleGame gameState={handleGameStateChange} />
           </div>
         </>
       )}
@@ -36,7 +52,19 @@ Pokémon we have here?"
           <div>
             <ChatBubble
               name="Professor Hazel"
-              message="Congratulations! You guessed correctly! You are a true Pokémon Master!"
+              message={`All Right! ${word} was caught! Would you like to try catch another`}
+            />
+          </div>
+          <button onClick={handleRestart}>Restart</button>
+        </>
+      )}
+
+      {gameState === "failed" && (
+        <>
+          <div>
+            <ChatBubble
+              name="Professor Hazel"
+              message={`${word} escaped using Run Away`}
             />
           </div>
           <button onClick={handleRestart}>Restart</button>
