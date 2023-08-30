@@ -145,6 +145,13 @@
 }
 
 @media (min-width: 769px) {
+  .navStretch {
+    display: flex;
+    justify-content: center;
+
+    margin-left: 10px;
+  }
+
   .navContainer {
     display: flex;
     justify-content: space-between;
@@ -152,7 +159,7 @@
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
     padding-bottom: 10px;
     min-width: 850px;
-    max-width: 1150px;
+    padding-left: 10px;
   }
 
   .navRedBar {
