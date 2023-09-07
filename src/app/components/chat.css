@@ -48,3 +48,12 @@
   z-index: -1;
   background-color: white;
 }
+@media only screen and (max-width: 420px) {
+  .wordle {
+    width: 400px;
+    left: -15px;
+  }
+  .conversation {
+    width: 400px;
+  }
+}
