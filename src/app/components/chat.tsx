@@ -1,17 +1,20 @@
 import "./chat.css";
 import WordleGame from "./Wordle";
 import { ChatBubble } from "./chat-bubble";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { PokemonContext } from "./PokemonContext";
 
 export default function Chat() {
+  const word = useContext(PokemonContext).word;
   const [gameState, setGameState] = useState("playing");
 
-  const handleWin = () => {
-    setGameState("winner");
+  const handleGameStateChange = (newGameState: string) => {
+    setGameState(newGameState);
   };
 
   const handleRestart = () => {
     setGameState("playing");
+    location.reload();
   };
 
   return (
@@ -25,10 +28,24 @@ export default function Chat() {
 Pokémon we have here?"
             />
           </div>
+        </>
+      )}
+
+      {gameState === "illegal" && (
+        <>
           <div>
-            <WordleGame onGameWin={handleWin} />
+            <ChatBubble
+              name="Professor Hazel"
+              message="User! This isnt the time to use that! Only use ENTER after you have filled all the letters."
+            />
           </div>
         </>
+      )}
+
+      {(gameState === "playing" || gameState === "illegal") && (
+        <div>
+          <WordleGame gameState={handleGameStateChange} />
+        </div>
       )}
 
       {gameState === "winner" && (
@@ -36,7 +53,23 @@ Pokémon we have here?"
           <div>
             <ChatBubble
               name="Professor Hazel"
-              message="Congratulations! You guessed correctly! You are a true Pokémon Master!"
+              message={`All Right! ${
+                word.charAt(0).toUpperCase() + word.slice(1)
+              } was caught! Would you like to try catch another?`}
+            />
+          </div>
+          <button onClick={handleRestart}>Restart</button>
+        </>
+      )}
+
+      {gameState === "failed" && (
+        <>
+          <div>
+            <ChatBubble
+              name="Professor Hazel"
+              message={`${
+                word.charAt(0).toUpperCase() + word.slice(1)
+              } escaped using Run Away, Do you want to try again?`}
             />
           </div>
           <button onClick={handleRestart}>Restart</button>
