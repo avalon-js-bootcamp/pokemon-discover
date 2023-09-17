@@ -91,18 +91,18 @@ function Navbar() {
               ></img>
             </div>
           </div>
-          <div className={styles.navBar}>
-            <div className={styles.navItemsContainer}>
-              <div className={styles.navItems}>
-                {navItems.map((item) => (
-                  <div key={item} className={styles.navItem}>
-                    {item}
-                  </div>
-                ))}
-              </div>
+        </div>
+        <div className={styles.navBar}>
+          <div className={styles.navItemsContainer}>
+            <div className={styles.navItems}>
+              {navItems.map((item) => (
+                <div key={item} className={styles.navItem}>
+                  {item}
+                </div>
+              ))}
             </div>
-            <button className={styles.trainerButton}>Become a Trainer</button>
           </div>
+          <button className={styles.trainerButton}>Become a Trainer</button>
         </div>
       </div>
     </>
